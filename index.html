@@ -151,29 +151,6 @@
     </footer>
 
     <script src="app.js" defer></script>
-    <script>
-    // Jednoduché odeslání formuláře jako mailto (fallback) a klientská validace
-    (function(){
-        var form = document.getElementById('contact-form');
-        var status = document.getElementById('form-status');
-        if(!form) return;
-        form.addEventListener('submit', function(e){
-            e.preventDefault();
-            if(form.querySelector('.honeypot').value) return; // spam
-            var name = encodeURIComponent(form.name.value.trim());
-            var email = encodeURIComponent(form.email.value.trim());
-            var message = encodeURIComponent(form.message.value.trim());
-            if(!name || !email || !message){
-                status.textContent = 'Vyplňte prosím všechna povinná pole.';
-                return;
-            }
-            var subject = encodeURIComponent('Kontakt z profilu: ' + (name || 'neznámý'));
-            var body = 'Jméno: ' + name + '%0D%0A' + 'E-mail: ' + email + '%0D%0A%0D%0A' + message;
-            window.location.href = 'mailto:miloslav.synek@email.cz?subject=' + subject + '&body=' + body;
-            status.textContent = 'Otevírám váš e‑mailový klient...';
-        });
-    })();
-    </script>
 
     <!-- Strukturovaná data -->
     <script type="application/ld+json">
