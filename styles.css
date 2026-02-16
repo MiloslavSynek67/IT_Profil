@@ -356,6 +356,30 @@ body {
     border-radius: 16px;
     font-weight: 600;
 }
+
+/* Restore boxed container look for skills tags */
+.skills-box {
+    display: block;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 10px 12px;
+    box-shadow: var(--shadow-light);
+    margin: 0 0 16px 0;
+}
+.skills-box #skills {
+    margin: 0;
+    padding: 6px 0;
+    gap: 8px;
+}
+.skills-box #skills li {
+    background: #f1f6ff;
+    color: var(--primary-blue);
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+    margin: 0;
+}
 .interests-list {
     list-style: disc;
     padding-left: 20px;
