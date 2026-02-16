@@ -1,77 +1,112 @@
 // app.js — načte profile.json a vykreslí jméno, skills a interests/projects
-(function(){
-  function el(sel){ return document.querySelector(sel); }
+(function () {
+  const q = (sel) => document.querySelector(sel);
 
+  /** Vytvoří element s textem */
+  const elWithText = (tag, text, className) => {
+    const e = document.createElement(tag);
+    if (className) e.className = className;
+    e.textContent = text || '';
+    return e;
+  };
+
+  const renderName = (name) => {
+    const nameEl = q('#name');
+    if (nameEl) nameEl.textContent = name || '';
+  };
+
+  const renderSkills = (skills) => {
+    const skillsEl = q('#skills');
+    if (!skillsEl || !Array.isArray(skills)) return;
+    skillsEl.innerHTML = '';
+    skills.forEach((s) => {
+      const li = elWithText('li', s);
+      skillsEl.appendChild(li);
+    });
+  };
+
+  const renderInterests = (interests) => {
+    const section = q('#interests');
+    if (!section || !Array.isArray(interests)) return;
+    section.innerHTML = '';
+    section.appendChild(elWithText('h3', 'Zájmy'));
+    const ul = document.createElement('ul');
+    ul.className = 'interests-list';
+    interests.forEach((it) => ul.appendChild(elWithText('li', it)));
+    section.appendChild(ul);
+  };
+
+  const renderProjects = (projects) => {
+    const section = q('#projects');
+    if (!section || !Array.isArray(projects)) return;
+    section.innerHTML = '';
+    section.appendChild(elWithText('h3', 'Projekty'));
+    projects.forEach((p) => {
+      const card = document.createElement('article');
+      card.className = 'project-card';
+      card.appendChild(elWithText('h4', p.title || ''));
+      card.appendChild(elWithText('p', p.description || ''));
+      if (p.link) {
+        const a = elWithText('a', 'Zobrazit projekt', 'btn btn-secondary');
+        a.href = p.link;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        card.appendChild(a);
+      }
+      section.appendChild(card);
+    });
+  };
+
+  const showFetchError = (err) => {
+    // eslint-disable-next-line no-console
+    console.error('Nelze načíst profile.json:', err);
+    const main = document.querySelector('main');
+    if (!main) return;
+    const msg = elWithText('div', 'Došlo k chybě při načítání profilu. Zkuste to prosím později.');
+    msg.className = 'fetch-error';
+    main.insertBefore(msg, main.firstChild);
+  };
+
+  // Načtení dat (zůstává fetch().then().catch() podle zadání)
   fetch('profile.json')
-    .then(function(res){
-      if(!res.ok) throw new Error('Network response was not ok');
+    .then((res) => {
+      if (!res.ok) throw new Error(`Network response was not ok (${res.status})`);
       return res.json();
     })
-    .then(function(data){
-      // jméno
-      var nameEl = el('#name');
-      if(nameEl) nameEl.textContent = data.name || '';
-
-      // skills
-      var skillsEl = el('#skills');
-      if(skillsEl && Array.isArray(data.skills)){
-        skillsEl.innerHTML = ''; // clear
-        data.skills.forEach(function(skill){
-          var li = document.createElement('li');
-          li.textContent = skill;
-          skillsEl.appendChild(li);
-        });
-      }
-
-      // interests
-      var interestsSection = el('#interests');
-      if(interestsSection && Array.isArray(data.interests)){
-        interestsSection.innerHTML = '<h3>Zájmy</h3>';
-        var ul = document.createElement('ul');
-        ul.className = 'interests-list';
-        data.interests.forEach(function(it){
-          var li = document.createElement('li');
-          li.textContent = it;
-          ul.appendChild(li);
-        });
-        interestsSection.appendChild(ul);
-      }
-
-      // projects (bonus) — pokud jsou
-      var projectsSection = el('#projects');
-      if(projectsSection && Array.isArray(data.projects)){
-        projectsSection.innerHTML = '<h3>Projekty</h3>';
-        data.projects.forEach(function(p){
-          var card = document.createElement('article');
-          card.className = 'project-card';
-          var title = document.createElement('h4');
-          title.textContent = p.title || '';
-          var desc = document.createElement('p');
-          desc.textContent = p.description || '';
-          card.appendChild(title);
-          card.appendChild(desc);
-          if(p.link){
-            var a = document.createElement('a');
-            a.href = p.link;
-            a.target = '_blank';
-            a.rel = 'noopener noreferrer';
-            a.textContent = 'Zobrazit projekt';
-            a.className = 'btn btn-secondary';
-            card.appendChild(a);
-          }
-          projectsSection.appendChild(card);
-        });
-      }
+    .then((data) => {
+      renderName(data.name);
+      renderSkills(data.skills);
+      renderInterests(data.interests);
+      renderProjects(data.projects);
+      // inicializace kontaktního formuláře (pokud existuje)
+      setupContactForm();
     })
-    .catch(function(err){
-      console.error('Nelze načíst profile.json:', err);
-      var main = document.querySelector('main');
-      if(main){
-        var msg = document.createElement('div');
-        msg.className = 'fetch-error';
-        msg.textContent = 'Došlo k chybě při načítání profilu. Zkuste to prosím později.';
-        main.insertBefore(msg, main.firstChild);
+    .catch(showFetchError);
+
+  /** Kontaktni formular — klientská validace + mailto fallback */
+  function setupContactForm() {
+    const form = q('#contact-form');
+    const status = q('#form-status');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const honeypot = form.querySelector('.honeypot');
+      if (honeypot && honeypot.value) return; // spam
+
+      const name = (form.name.value || '').trim();
+      const email = (form.email.value || '').trim();
+      const message = (form.message.value || '').trim();
+      if (!name || !email || !message) {
+        if (status) status.textContent = 'Vyplňte prosím všechna povinná pole.';
+        return;
       }
+
+      const subject = encodeURIComponent(`Kontakt z profilu: ${name}`);
+      const body = encodeURIComponent(`Jméno: ${name}\nE-mail: ${email}\n\n${message}`);
+      window.location.href = `mailto:miloslav.synek@email.cz?subject=${subject}&body=${body}`;
+      if (status) status.textContent = 'Otevírám váš e‑mailový klient...';
     });
+  }
 
 })();
