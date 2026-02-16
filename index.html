@@ -1,36 +1,196 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IT Profil</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Profesní profil Miloslava Synka — student informatiky se zaměřením na analýzu systémů, web a grafika ve videohrách.">
+    <meta name="keywords" content="Miloslav Synek, IT profil, informatika, web, grafika, portfolio">
+    <meta name="author" content="Miloslav Synek">
+    <meta name="theme-color" content="#0a66c2">
+    <title>Miloslav Synek | Profesionální Profil</title>
+    <link rel="canonical" href="/">
+    <link rel="preload" href="styles.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a66c2'/%3E%3Ctext x='50' y='62' font-size='50' text-anchor='middle' fill='white' font-family='Arial'%3EMS%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Miloslav Synek — Profesionální Profil">
+    <meta property="og:description" content="Student informatiky; web, analýza systémů a grafika ve videohrách. Kontaktujte mě pro spolupráci.">
+    <meta property="og:type" content="profile">
+    <meta property="og:locale" content="cs_CZ">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Miloslav+Synek">
+    <meta property="og:url" content="/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Miloslav Synek — Profesionální Profil">
+    <meta name="twitter:description" content="Student informatiky; web, analýza systémů a grafika ve videohrách.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="" crossorigin="anonymous">
 </head>
 <body>
-  <main class="container">
-    <section class="hero">
-      <h1>Vítejte na mém webu</h1>
-      <p class="lead">Ahoj, jsem Miloslav Synek, student informatiky se zájmem o vývoj webových aplikací.</p>
-    </section>
 
-    <section id="about" class="card">
-      <h2>O mně</h2>
-      <ul>
-        <li><strong>Kdo jsem:</strong> Jsem IT student a nechci mit s IT nic spolecneho nadale.</li>
-        <li><strong>Co umim:</strong> Zaklady programovani</li>
-        <li><strong>Co me bavi:</strong> tvorba webu, uceni novych technologii.</li>
-        <li><strong>Kam smeruji:</strong> Mimo IT obor</li>
-      </ul>
-    </section>
+    <a class="skip-link" href="#main-content">Přejít na obsah</a>
 
-    <section id="contact" class="card">
-      <h2>Kontakt</h2>
-      <p>Chcete-li me kontaktovat, prosim ne</p>
-    </section>
-  </main>
+    <nav class="navbar" role="navigation" aria-label="Hlavní navigace">
+        <div class="container">
+            <div class="logo"><a href="#" class="logo-link">MS</a></div>
+            <ul class="nav-links">
+                <li><a href="#about" aria-label="O mně"><i class="fas fa-user" aria-hidden="true"></i> O mně</a></li>
+                <li><a href="#experience" aria-label="Zkušenosti"><i class="fas fa-briefcase" aria-hidden="true"></i> Zkušenosti</a></li>
+                <li><a href="#skills" aria-label="Dovednosti"><i class="fas fa-tools" aria-hidden="true"></i> Dovednosti</a></li>
+                <li><a href="#contact" aria-label="Kontakt"><i class="fas fa-envelope" aria-hidden="true"></i> Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
 
-  <footer class="site-footer">
-    <div class="container">&copy; 2026 IT student</div>
-  </footer>
+    <main id="main-content" class="container main-content" role="main">
+        
+        <section class="profile-header card">
+            <div class="cover-photo"></div>
+            <div class="profile-body">
+                <div class="profile-avatar-wrapper">
+                    <img src="https://via.placeholder.com/160/cccccc/ffffff?text=MS" alt="Fotografie Miloslava Synka" class="profile-avatar" loading="lazy" width="160" height="160" srcset="https://via.placeholder.com/120/cccccc/ffffff?text=MS 120w, https://via.placeholder.com/160/cccccc/ffffff?text=MS 160w, https://via.placeholder.com/240/cccccc/ffffff?text=MS 240w" sizes="(max-width:480px) 120px, 160px">
+                </div>
+                <div class="profile-info">
+                    <h1 id="name"></h1>
+                    <p class="headline">Student informatiky | Grafika ve videohrách</p>
+                    <p class="location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Příbram / Česká republika</p>
+                    <div class="header-actions">
+                        <a href="#contact" class="btn btn-primary">Kontaktovat</a>
+                        <a href="https://github.com/MiloslavSynek67" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Zobrazit GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="card">
+            <h2>O mně</h2>
+            <p>
+                Aktuálně studuji informatiku, což mi dalo silný základ v analytickém myšlení a schopnost rychle se orientovat v komplexních systémech. I když se můj profesní zájem postupně přesouvá směrem k netechnickým oborům, dokážu efektivně využít své IT znalosti k optimalizaci procesů a digitální transformaci.
+            </p>
+            <p>
+                Baví mě hledat logiku v datech a zjednodušovat věci, které na první pohled vypadají složitě. Jsem komunikativní, adaptabilní a věřím, že technické pozadí je obrovskou výhodou pro jakoukoliv roli, která vyžaduje strukturovaný přístup k práci.
+            </p>
+        </section>
+
+        <section id="experience" class="card">
+            <h2>Zkušenosti & Vzdělání</h2>
+            <div class="experience-item">
+                <div class="exp-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
+                <div class="exp-details">
+                    <h3>Technické projekty a vývoj</h3>
+                    <p class="exp-company">Samostatná činnost / GitHub</p>
+                    <p class="exp-duration">2024 – Současnost</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Návrh a správa responzivních webových rozhraní (HTML5, CSS3).</li>
+                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Základní algoritmizace a práce s datovými strukturami.</li>
+                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Správa kódu pomocí verzovacího systému Git.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="experience-item">
+                <div class="exp-icon"><i class="fas fa-university" aria-hidden="true"></i></div>
+                <div class="exp-details">
+                    <h3>Vysokoškolské studium informatiky</h3>
+                    <p class="exp-company">Vysoká škola / Fakulta IT</p>
+                    <p class="exp-duration">2022 – 2026 (očekávané ukončení)</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Zaměření na analýzu systémů a logické myšlení.</li>
+                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Týmová spolupráce na semestrálních projektech.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="card">
+            <h2>Dovednosti</h2>
+            <ul id="skills" class="skills-grid"></ul>
+        </section>
+
+        <section id="interests" class="card">
+            <!-- Dynamicky naplněno z profile.json -->
+        </section>
+
+        <section id="projects" class="card">
+            <!-- Dynamicky naplněno z profile.json (projekty) -->
+        </section>
+
+        <section id="contact" class="card">
+            <h2>Kontakt</h2>
+            <p>Máte zájem o diskuzi o nových příležitostech nebo mezioborové spolupráci? Ozvěte se mi.</p>
+            <form id="contact-form" class="contact-form" action="#" method="post" novalidate aria-label="Kontaktní formulář">
+                <div class="form-row">
+                    <label for="name">Jméno</label>
+                    <input id="name" name="name" type="text" required autocomplete="name">
+                </div>
+                <div class="form-row">
+                    <label for="email">E‑mail</label>
+                    <input id="email" name="email" type="email" required autocomplete="email">
+                </div>
+                <div class="form-row">
+                    <label for="message">Zpráva</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+                <input type="text" name="city" class="honeypot" style="display:none" tabindex="-1" autocomplete="off">
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Odeslat</button>
+                    <a href="mailto:miloslav.synek@email.cz" class="btn btn-secondary">Napsat e‑mail</a>
+                </div>
+                <div id="form-status" class="form-status" aria-live="polite"></div>
+            </form>
+            <div class="contact-links">
+                <a href="https://github.com/MiloslavSynek67" target="_blank" rel="noopener noreferrer" class="btn btn-icon" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                <a href="#" class="btn btn-icon" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 Miloslav Synek. Vytvořeno pro profesionální prezentaci.</p>
+        </div>
+    </footer>
+
+    <script src="app.js" defer></script>
+    <script>
+    // Jednoduché odeslání formuláře jako mailto (fallback) a klientská validace
+    (function(){
+        var form = document.getElementById('contact-form');
+        var status = document.getElementById('form-status');
+        if(!form) return;
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            if(form.querySelector('.honeypot').value) return; // spam
+            var name = encodeURIComponent(form.name.value.trim());
+            var email = encodeURIComponent(form.email.value.trim());
+            var message = encodeURIComponent(form.message.value.trim());
+            if(!name || !email || !message){
+                status.textContent = 'Vyplňte prosím všechna povinná pole.';
+                return;
+            }
+            var subject = encodeURIComponent('Kontakt z profilu: ' + (name || 'neznámý'));
+            var body = 'Jméno: ' + name + '%0D%0A' + 'E-mail: ' + email + '%0D%0A%0D%0A' + message;
+            window.location.href = 'mailto:miloslav.synek@email.cz?subject=' + subject + '&body=' + body;
+            status.textContent = 'Otevírám váš e‑mailový klient...';
+        });
+    })();
+    </script>
+
+    <!-- Strukturovaná data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Miloslav Synek",
+      "url": "/",
+      "sameAs": ["https://github.com/MiloslavSynek67"],
+      "jobTitle": "Student informatiky",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Příbram",
+        "addressCountry": "CZ"
+      }
+    }
+    </script>
+
 </body>
 </html>
