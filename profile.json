@@ -1,0 +1,23 @@
+{
+  "name": "Miloslav Synek",
+  "skills": [
+    "Analýza dat",
+    "HTML",
+    "CSS",
+    "Git",
+    "Projektové řízení",
+    "Kritické myšlení"
+  ],
+  "interests": [
+    "Web development",
+    "Herní grafika",
+    "AI nástroje"
+  ],
+  "projects": [
+    {
+      "title": "Osobní web",
+      "description": "Jednostránkový profil nasazený na GitHub Pages",
+      "link": "https://github.com/MiloslavSynek67/IT_Profil"
+    }
+  ]
+}
